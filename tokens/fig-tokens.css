@@ -1,0 +1,105 @@
+/* Apollo Design System — design tokens.
+   Single source of truth: the Apollo Tokens page (Apollo Design System.dc.html).
+   Generated from the same model as apollo-tokens.json. Do not hand-edit. */
+
+:root {
+  /* ─── BRAND ─── */
+  --ys-blue: #0088ff; /* Primary brand */
+  --ys-blue-hover: #006fcc; /* Primary hover (~12% darker) */
+  --ys-blue-mid: #dbeafe; /* Soft blue tint — avatars, badges */
+  --ys-blue-lt: #f0f8ff; /* Lightest tint — selected rows */
+
+  /* ─── NEUTRALS ─── */
+  --ys-white: #ffffff; /* Cards, surfaces */
+  --ys-bg: #f5f7fe; /* App background — slightly cool */
+  --ys-bg-row: #fafbfe; /* Table headers, row hover */
+  --ys-border: #e8eaf2; /* All borders, dividers */
+  --ys-border-2: #cdd0e3; /* Border on hover */
+  --ys-icon-dark: #4a4f68; /* Header icon buttons */
+  --ys-text: #3c3f4e; /* Primary text — soft near-black */
+  --ys-muted: #8a8fa8; /* Secondary text, icons */
+
+  /* ─── ACCENTS ─── */
+  --ys-red: #ff404b; /* Notifications, urgent */
+  --ys-green: #22c55e; /* Success, validated */
+  --ys-orange: #f59e0b; /* Warning, à améliorer */
+  --ys-purple: #8b5cf6; /* Calendar / comm */
+  --ys-pink: #ec4899; /* Calendar */
+
+  /* ─── BADGE SURFACES (bg / fg pairs) ─── */
+  --ys-success-bg: #dcfce7;  --ys-success-fg: #15803d;
+  --ys-warning-bg: #fef3c7;  --ys-warning-fg: #92400e;
+  --ys-info-bg: #e0f2fe;  --ys-info-fg: #0369a1;
+  --ys-danger-bg: #fee2e2;  --ys-danger-fg: #dc2626;
+  --ys-redo-bg: #ffedd5;  --ys-redo-fg: #c2410c;
+  --ys-locked-bg: #f1f5f9;  --ys-locked-fg: #94a3b8;
+  --ys-purple-bg: #ede9fe;  --ys-purple-fg: #6d28d9;
+  --ys-pink-bg: #fce7f3;  --ys-pink-fg: #9d174d;
+  --ys-blue-bg: #dbeafe;  --ys-blue-fg: #1d4ed8;
+
+  /* ─── BRAND GRADIENT (0 / -45°) ─── */
+  --ys-gradient-1: #fbb03b;
+  --ys-gradient-2: #ed1e79;
+  --ys-gradient-3: #29abe2;
+  --ys-gradient-4: #19dbad;
+  --ys-gradient-brand: linear-gradient(-45deg, #fbb03b, #ed1e79, #29abe2, #19dbad);
+
+  /* ─── TYPOGRAPHY ─── */
+  --ys-font: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ys-fs-9: 9px;
+  --ys-fs-10: 10px;
+  --ys-fs-11: 11px;
+  --ys-fs-12: 12px;
+  --ys-fs-13: 13px;
+  --ys-fs-14: 14px;
+  --ys-fs-16: 16px;
+  --ys-fs-18: 18px;
+  --ys-fs-20: 20px;
+  --ys-fs-22: 22px;
+  --ys-fs-28: 28px;
+  --ys-fw-regular: 400;
+  --ys-fw-medium: 500;
+  --ys-fw-semi: 600;
+  --ys-fw-bold: 700;
+  --ys-fw-black: 800;
+  --ys-lh-tight: 1.2;
+  --ys-lh-snug: 1.4;
+  --ys-lh-base: 1.6;
+  --ys-lh-relax: 1.7;
+  --ys-ls-caps: 0.05em;
+  --ys-ls-caps2: 0.07em;
+
+  /* ─── SPACING ─── */
+  --ys-sp-1: 2px;
+  --ys-sp-2: 4px;
+  --ys-sp-3: 5px;
+  --ys-sp-4: 6px;
+  --ys-sp-5: 8px;
+  --ys-sp-6: 10px;
+  --ys-sp-7: 12px;
+  --ys-sp-8: 14px;
+  --ys-sp-9: 16px;
+  --ys-sp-10: 20px;
+  --ys-sp-11: 24px;
+  --ys-sp-12: 28px;
+
+  /* ─── RADIUS ─── */
+  --ys-r-xs: 4px;
+  --ys-r-sm: 6px;
+  --ys-r-md: 8px;
+  --ys-r-lg: 10px;
+  --ys-r-xl: 12px;
+  --ys-r-2xl: 14px;
+  --ys-r-pill: 20px;
+  --ys-r-full: 9999px;
+
+  /* ─── SHADOWS ─── */
+  --ys-shadow-sm: 0 2px 10px rgba(0,0,0,.06);
+  --ys-shadow-md: 0 4px 16px rgba(0,136,255,.10);
+  --ys-shadow-lg: 0 20px 60px rgba(0,0,0,.15);
+
+  /* ─── LAYOUT ─── */
+  --ys-header-h: 50px;
+  --ys-sidebar-w: 200px;
+  --ys-content-max: 1500px;
+}

@@ -1,0 +1,773 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title> Design System Figma Site YS (Atomic Design)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2edfcece-a7b8-80af-8e15-c88fc8e80fee" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">🎨</span></div><h1 class="page-title" dir="auto"> Design System Figma Site YS (Atomic Design)</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/list_gray.svg" style="width:14px;height:14px;display:block"/></span>Team</th><td><span class="selected-value select-value-color-gray">Graphistes</span></td></tr><tr class="property-row property-row-status"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/burst_gray.svg" style="width:14px;height:14px;display:block"/></span>État</th><td><span class="status-value select-value-color-gray"><div class="status-dot status-dot-color-gray"></div>Archivé</span></td></tr><tr class="property-row property-row-person"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/friends_gray.svg" style="width:14px;height:14px;display:block"/></span>En charge du ticket</th><td><span class="user"><img src="Design%20System%20Figma%20Site%20YS%20(Atomic%20Design)/my-notion-face-transparent.png" class="icon user-icon"/>Mounir SAKRANE</span></td></tr><tr class="property-row property-row-multi_select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/library_gray.svg" style="width:14px;height:14px;display:block"/></span>Pôle</th><td><span class="selected-value select-value-color-default">Graphistes</span><span class="selected-value select-value-color-yellow">UX</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Priorité</th><td><span class="selected-value select-value-color-yellow">Moyenne</span></td></tr><tr class="property-row property-row-relation"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/run_gray.svg" style="width:14px;height:14px;display:block"/></span>Cycle</th><td><a href="https://app.notion.com/p/S04-2026-2b5fcecea7b88062ada1db605c2ac799?pvs=21"><img class="icon notion-static-icon" src="https://app.notion.com/icons/run_lightgray.svg"/>S04 - 2026</a>, <a href="https://app.notion.com/p/S05-2026-2b5fcecea7b88024a099c2d569ba1bbe?pvs=21"><img class="icon notion-static-icon" src="https://app.notion.com/icons/run_lightgray.svg"/>S05 - 2026</a>, <a href="https://app.notion.com/p/S06-2026-2b5fcecea7b8803ca800dd72e5d8c1d1?pvs=21"><img class="icon notion-static-icon" src="https://app.notion.com/icons/run_lightgray.svg"/>S06 - 2026</a></td></tr><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Échéance souhaitée</th><td><time>February 13, 2026</time></td></tr><tr class="property-row property-row-created_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Date de création</th><td><time>January 19, 2026 10:07 AM</time></td></tr><tr class="property-row property-row-last_edited_time"><th><span class="icon property-icon"><img src="https://app.notion.com/icons/clock_gray.svg" style="width:14px;height:14px;display:block"/></span>Dernière modification</th><td><time>June 22, 2026 10:57 AM</time></td></tr></tbody></table></header><div class="page-body"><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-8018-ad90-ddbc1bcef859" class="">📋 Objectif</h2></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-800a-9aa6-cd29a451b56b" class="">Créer un Design System structuré et scalable pour le site YouSchool, avec une architecture tokens → composants professionnelle.</p></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-80a4-ac87-f64aceae4c88" class="">Contexte</h2></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8061-a03c-c1cb470e26bb" class=""><br/><strong>Stack technique :</strong> WordPress + Elementor<br/><strong>Enjeux :</strong> SEO, conversion, réassurance, mobile-first</p></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8095-bca2-e7b1ea3255f5" class=""><strong>Utilisateurs du DS :</strong><br/>- Designer UX (création et maintenance)<br/>- Intégrateurs (accès direct au fichier Figma)</p></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8086-99a9-eafb129a2d66"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-8000-b3f8-e0e3a2777e4d" class="">🏗️ Architecture des variables Figma</h2></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80c7-a4dd-e9a8f1bd2fdf" class="">Principe</h3></div><div style="display:contents" dir="auto"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2edfcece-a7b8-80b4-89ee-ffa508e97566" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Core (valeurs brutes) → Theme (alias sémantiques) → Composants</code></pre></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-80f1-b1ba-cd02677e164b" class="">⚠️ Les valeurs ci-dessous sont indicatives. On les mets en V1 et on pourra ajuster facilement par la suite.</blockquote></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8045-978e-f6293d2634fa"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-808b-b802-d72b1c792ff7" class="">📁 Collection : Core</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-80ad-a863-d1c20e18d859" class="">Palettes complètes, jamais utilisées directement.</blockquote></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-807d-bcbd-d917c7e1bfca" class=""><strong>Couleurs :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80cf-abb8-e7446d7bb2bd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>primary/50</code> → <code>primary/900</code> (10 nuances)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b2-84b0-e8a64a727f29" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>secondary/50</code> → <code>secondary/900</code> (10 nuances)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-b2ab-e2e97f7647ad" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>neutral/50</code> → <code>neutral/900</code> (10 nuances)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b4-b66f-ea980139af70" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>success/500</code>, <code>success/600</code></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-809f-822f-c9f037e202e8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>warning/500</code>, <code>warning/600</code></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-809d-84a6-cc466fb77572" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>error/500</code>, <code>error/600</code></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-806c-bea6-c41508b56b8a"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8091-9866-f3725e665058" class="">📁 Collection : Theme</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-8002-832c-e36c8825a2c8" class="">Alias sémantiques mappés aux Core tokens.</blockquote></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8050-88ba-ff5e8fd617f1" class=""><strong>Texte :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-b2b2-eafffc3d2810" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-primary</code> → {core/neutral/900}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80e5-b09f-ca36c6f3dea5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-secondary</code> → {core/neutral/600}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80bb-98e3-d01111941a7f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-muted</code> → {core/neutral/400}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f5-a531-ecf5cf2d156b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-inverse</code> → #FFFFFF</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8010-9103-dcd546e3b719" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-link</code> → {core/primary/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8051-a66d-ddd9482901c1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>text-link-hover</code> → {core/primary/700}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-808f-a5d0-c92d0cb138e6" class=""><strong>Backgrounds :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8098-9abb-ea7c35e1d1f5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>bg-page</code> → {core/neutral/50}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8001-9d80-cbf3df0967cf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"> <code>bg-surface</code> → #FFFFFF</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-802b-8645-cdbbe7906e97" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>bg-surface-alt</code> → {core/neutral/100}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b2-ac79-fddc99ddef01" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>bg-overlay</code> → rgba(0,0,0,0.5)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80d1-a5ae-d3163a9f11dc" class=""><strong>Interactive :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a1-8e3b-cd59a06c3912" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>interactive-primary</code> → {core/primary/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ed-86ab-fe906073c7d4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>interactive-primary-hover</code> → {core/primary/600}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-805a-a1d5-c39f349d2285" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>interactive-secondary</code> → {core/secondary/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8013-9491-f90de334444c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>interactive-secondary-hover</code> → {core/secondary/600}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80a2-8d40-e27090bdcf74" class=""><strong>Borders :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8044-af62-da753efa1b26" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>border-default</code> → {core/neutral/200}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8029-86f9-e29b9c6e38f3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>border-strong</code> → {core/neutral/300}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8003-be53-ee445c79621c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>border-focus</code> → {core/primary/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8065-979d-d3e6083be8a2" class=""><strong>Status :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8098-8191-efd9318eef4c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>status-success</code> → {core/success/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80c2-8e82-cca62648c294" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>status-warning</code> → {core/warning/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80be-a140-eab0c559c0ab" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><code>status-error</code> → {core/error/500}</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8051-a4d8-e584fe62e2f8"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-802a-8fcf-d39e23e53b38" class="">📁 Collection : Spacing</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-8063-9c1d-d013fe100bc2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-803e-b74d-c9cd11e073c2"><th id="pq&lt;v" class="simple-table-header-color simple-table-header">Variable</th><th id="lLrF" class="simple-table-header-color simple-table-header">Valeur</th><th id="n&lt;[{" class="simple-table-header-color simple-table-header">Usage</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-806b-af1e-f8370d6aec84"><td id="pq&lt;v" class=""><code>xs</code></td><td id="lLrF" class="">4px</td><td id="n&lt;[{" class="">Micro-espacements</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80da-afae-c38bf73861d0"><td id="pq&lt;v" class=""><code>sm</code></td><td id="lLrF" class="">8px</td><td id="n&lt;[{" class="">Gaps serrés</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80df-9c42-e757e1a011c1"><td id="pq&lt;v" class=""><code>md</code></td><td id="lLrF" class="">16px</td><td id="n&lt;[{" class="">Padding standard</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80b9-b663-c7d5933ba065"><td id="pq&lt;v" class=""><code>lg</code></td><td id="lLrF" class="">24px</td><td id="n&lt;[{" class="">Sections</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80de-8b5b-d9706c674f1b"><td id="pq&lt;v" class=""><code>xl</code></td><td id="lLrF" class="">32px</td><td id="n&lt;[{" class="">Blocs</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80cc-88bd-d47a7a7bbe96"><td id="pq&lt;v" class=""><code>2xl</code></td><td id="lLrF" class="">48px</td><td id="n&lt;[{" class="">Séparations fortes</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8013-8d8d-ca32373fe75b"><td id="pq&lt;v" class=""><code>3xl</code></td><td id="lLrF" class="">64px</td><td id="n&lt;[{" class="">Sections majeures</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8095-b87b-d85ecc45e549"><td id="pq&lt;v" class=""><code>4xl</code></td><td id="lLrF" class="">96px</td><td id="n&lt;[{" class="">Hero, headers</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8013-b111-fd3514c3d17a"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8092-ad2d-e711bb140521" class="">📁 Collection : Radius</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-80d1-ac5c-e2fba681ba4c" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-807a-8b09-f1a40f8f8ea0"><th id="Zzvz" class="simple-table-header-color simple-table-header">Variable</th><th id="\@?a" class="simple-table-header-color simple-table-header">Valeur</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8087-98da-dff4c1852cdf"><td id="Zzvz" class=""><code>none</code></td><td id="\@?a" class="">0px</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8018-b784-d7b941aeb39b"><td id="Zzvz" class=""><code>sm</code></td><td id="\@?a" class="">4px</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8088-b15e-ea2cb7bcad68"><td id="Zzvz" class=""><code>md</code></td><td id="\@?a" class="">8px</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80ee-8a81-c42aefcbb2b1"><td id="Zzvz" class=""><code>lg</code></td><td id="\@?a" class="">12px</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8071-a44c-e5ca381091d8"><td id="Zzvz" class=""><code>xl</code></td><td id="\@?a" class="">16px</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80af-9ac2-e926fd39bf84"><td id="Zzvz" class=""><code>full</code></td><td id="\@?a" class="">999px</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-809a-8326-e1ceef9d886e"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80e1-b411-f47c60e7dd37" class="">v📁 Collection : Shadows</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-80e6-bf5e-dbaf0800a4e2" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-802b-a4ec-d4bb3f180658"><th id="~BE{" class="simple-table-header-color simple-table-header">Variable</th><th id="yr{i" class="simple-table-header-color simple-table-header">Valeur</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80ef-9dc9-d41db22fcdb0"><td id="~BE{" class=""><code>sm</code></td><td id="yr{i" class="">0 1px 2px rgba(0,0,0,0.05)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80d5-a058-f17df928c20c"><td id="~BE{" class=""><code>md</code></td><td id="yr{i" class="">0 4px 6px rgba(0,0,0,0.1)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80f6-94c8-c2832a5cd692"><td id="~BE{" class=""><code>lg</code></td><td id="yr{i" class="">0 10px 15px rgba(0,0,0,0.1)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80a0-902f-d40f73051566"><td id="~BE{" class=""><code>xl</code></td><td id="yr{i" class="">0 20px 25px rgba(0,0,0,0.15)</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8039-b456-c9d9b16088aa"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-8060-ab16-e20b3caf8375" class="">📱 Gestion du Responsive — Variable Modes</h2></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80af-9a18-ddd3f9c119a7" class="">Récap des usages de Modes</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-801e-94d1-ce23b98af198" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-802c-8788-ebbe466fd80c"><th id=":F~?" class="simple-table-header-color simple-table-header">Collection</th><th id="aCzN" class="simple-table-header-color simple-table-header">Mode 1</th><th id="}EXD" class="simple-table-header-color simple-table-header">Mode 2</th><th id="XtNu" class="simple-table-header-color simple-table-header">Usage</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80c5-b185-fa9f6b29b879"><td id=":F~?" class=""><strong>Colors</strong></td><td id="aCzN" class="">Light</td><td id="}EXD" class="">(Dark)</td><td id="XtNu" class="">Theming couleurs — <em>Dark optionnel</em></td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80b6-8a5b-d0e488469373"><td id=":F~?" class=""><strong>Spacing</strong></td><td id="aCzN" class="">Desktop</td><td id="}EXD" class="">Mobile</td><td id="XtNu" class="">Responsive espacements</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80be-9d3d-fe014dde0b58"><td id=":F~?" class=""><strong>Typography</strong></td><td id="aCzN" class="">Desktop</td><td id="}EXD" class="">Mobile</td><td id="XtNu" class="">Responsive typos</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-80fa-bb91-e9c9129e687e"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8063-b67d-e62e7075621d" class="">Ce qui change entre Desktop et Mobile</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-8080-acdf-cd61498a8b23" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80f3-bf49-c712f8ce6a58"><th id="xqW^" class="simple-table-header-color simple-table-header">Élément</th><th id="ag~M" class="simple-table-header-color simple-table-header">Desktop</th><th id="\;Ct" class="simple-table-header-color simple-table-header">Mobile</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8006-9c11-da6c6778ec7b"><td id="xqW^" class="">Typo Headings</td><td id="ag~M" class="">Tailles complètes</td><td id="\;Ct" class="">~65-70%</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8066-959c-e630d8ec1427"><td id="xqW^" class="">Spacing sections</td><td id="ag~M" class="">Généreux (64-96px)</td><td id="\;Ct" class="">Réduit (32-48px)</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80e9-b4a0-d42738745eec"><td id="xqW^" class="">Navigation</td><td id="ag~M" class="">Header avec menu</td><td id="\;Ct" class="">Burger menu</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-807f-be16-e17223d52832"><td id="xqW^" class="">CTA principaux</td><td id="ag~M" class="">Inline</td><td id="\;Ct" class="">Sticky bottom</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80b7-9c3f-c35bb5d59ae2"><td id="xqW^" class="">Grilles</td><td id="ag~M" class="">Multi-colonnes</td><td id="\;Ct" class="">Stack vertical</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-803c-bba9-edb67e3d8c24"><td id="xqW^" class="">Formulaires</td><td id="ag~M" class="">Horizontal possible</td><td id="\;Ct" class="">Toujours vertical</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8069-8636-d772253e6849"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-80fc-9a62-ef63a066b885" class="">🔤 Styles de texte — Desktop &amp; Mobile</h2></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-806e-8e10-e4659222edf6" class="">Créer des Text Styles avec déclinaisons responsive via Variable Modes.</blockquote></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-805d-894b-e0f0220553d4" class="">Headings</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-8081-ae0a-d45796882530" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-805c-88e9-e329e7263dd9"><th id="[Mzz" class="simple-table-header-color simple-table-header">Style</th><th id="xq@e" class="simple-table-header-color simple-table-header">Desktop</th><th id="asrT" class="simple-table-header-color simple-table-header">Mobile</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-805b-99cd-ec6428b3a9ff"><td id="[Mzz" class=""><code>Heading/H1</code></td><td id="xq@e" class="">56px / Bold</td><td id="asrT" class="">36px / Bold</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8089-a036-d52e520815b8"><td id="[Mzz" class=""><code>Heading/H2</code></td><td id="xq@e" class="">48px / Bold</td><td id="asrT" class="">32px / Bold</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80d6-a3eb-effa02621b5f"><td id="[Mzz" class=""><code>Heading/H3</code></td><td id="xq@e" class="">36px / SemiBold</td><td id="asrT" class="">24px / SemiBold</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80bf-a079-cbc526364666"><td id="[Mzz" class=""><code>Heading/H4</code></td><td id="xq@e" class="">24px / SemiBold</td><td id="asrT" class="">20px / SemiBold</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80db-b35c-c035459c9a01"><td id="[Mzz" class=""><code>Heading/H5</code></td><td id="xq@e" class="">20px / Medium</td><td id="asrT" class="">18px / Medium</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8000-8579-f0d246585038"><td id="[Mzz" class=""><code>Heading/H6</code></td><td id="xq@e" class="">18px / Medium</td><td id="asrT" class="">16px / Medium</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-805c-9e24-d710da372107" class="">Body</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-800d-b8be-fc8fb842e5f5" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-804c-a090-cd27b9fc5c44"><th id="C[o&gt;" class="simple-table-header-color simple-table-header">Style</th><th id="q`vV" class="simple-table-header-color simple-table-header">Desktop</th><th id=";&gt;Oo" class="simple-table-header-color simple-table-header">Mobile</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80dd-8a4a-d181879010e0"><td id="C[o&gt;" class=""><code>Body/Large</code></td><td id="q`vV" class="">18px / Regular</td><td id=";&gt;Oo" class="">16px / Regular</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8040-9995-f9d044011955"><td id="C[o&gt;" class=""><code>Body/Default</code></td><td id="q`vV" class="">16px / Regular</td><td id=";&gt;Oo" class="">15px / Regular</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80b6-b325-d36f600ec063"><td id="C[o&gt;" class=""><code>Body/Small</code></td><td id="q`vV" class="">14px / Regular</td><td id=";&gt;Oo" class="">13px / Regular</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80a8-b386-f754c3cb03da" class="">UI</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-80a1-a8fb-ca80ad5be847" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8069-8db8-eed395cb2378"><th id="dGHM" class="simple-table-header-color simple-table-header">Style</th><th id="{dgX" class="simple-table-header-color simple-table-header">Desktop</th><th id="_J|A" class="simple-table-header-color simple-table-header">Mobile</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8046-a40d-d0cf56f59b89"><td id="dGHM" class=""><code>UI/Button</code></td><td id="{dgX" class="">16px / SemiBold</td><td id="_J|A" class="">15px / SemiBold</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8099-a72d-db544d928b8e"><td id="dGHM" class=""><code>UI/Button-sm</code></td><td id="{dgX" class="">14px / Medium</td><td id="_J|A" class="">14px / Medium</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8042-b1c5-d4e3f047c83e"><td id="dGHM" class=""><code>UI/Label</code></td><td id="{dgX" class="">14px / Medium</td><td id="_J|A" class="">13px / Medium</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80dc-983f-f93b50f52d72"><td id="dGHM" class=""><code>UI/Caption</code></td><td id="{dgX" class="">12px / Regular</td><td id="_J|A" class="">12px / Regular</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-80db-a41d-d65e3a335bc5"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-80e0-8923-caac822eff01" class="">📁 Structure des pages Figma</h2></div><div style="display:contents" dir="auto"><pre id="2edfcece-a7b8-807a-be1f-f9b92503b8cf" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">📄 Cover
+📄 🎨 Foundations
+   └── Couleurs
+   └── Typographie (Desktop + Mobile)
+   └── Spacing
+   └── Radius &amp; Shadows
+   └── Iconographie
+📄 🧩 Components
+   └── Atoms (inputs, buttons, badges...)
+   └── Molecules (cards, forms, alerts...)
+   └── Organisms (header, footer, sections...)
+📄 📐 Sections
+   └── Hero
+   └── Features
+   └── Formations
+   └── Témoignages
+   └── FAQ
+   └── CTA
+   └── Header / Footer
+📄 📄 Templates
+   └── Home
+   └── Page Formation
+   └── Page Catégorie
+   └── Blog / Article
+   └── Contact / Lead
+📄 🧪 Playground</code></pre></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-80af-a077-d9cf4a10a3e5"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-809a-b138-ed7b14671c7f" class="">🧩 Composants à créer</h2></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80c8-8967-edfe2d495ea6" class="">Logique de construction : Atomic Design</h3></div><div style="display:contents" dir="auto"><pre id="2edfcece-a7b8-800c-bfcb-f46fc56006d8" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Atoms → Molecules → Organisms → Sections → Templates</code></pre></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-802d-bc1c-f4e81188ad2e" class=""><strong>On construit les briques de base d’abord</strong>, puis on les assemble en composants plus complexes.</p></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-800b-9f68-ccbd205f0d47"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8001-808e-fec567c22bf8" class="">🔴 Priorité 1 — Atoms (briques de base)</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-8035-9e8c-ea1bac39566f" class="">Composants élémentaires, utilisés partout.</blockquote></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-803f-9ca1-c1d777decc92" class=""><strong>Boutons :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-808d-9dba-dd464169e29a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Button</strong><br/>- Variants : Primary, Secondary, Outline, Ghost, Link<br/>- Tailles : sm, md, lg<br/>- États : default, hover, focus, disabled, loading<br/>- Avec/sans icône (left, right)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-805a-bbf9-fc63f44afd7a" class=""><strong>Champs de formulaire :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80d9-9ba9-f2bb30063d7a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Input / TextField</strong><br/>- États : default, focus, filled, error, disabled<br/>- Avec : label, placeholder, helper text, error message<br/>- Variante : avec icône (left/right)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a1-adff-cfd8c4cc7e12" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Textarea</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-801b-bd59-d66589857491" class="bulleted-list"><li style="list-style-type:disc">Mêmes états que Input</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-807f-81de-cad1e53eeeba" class="bulleted-list"><li style="list-style-type:disc">Resizable ou fixed</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8054-88a0-ea5b366e08f5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Select / Dropdown</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80d8-8180-fe4f8d2835e6" class="bulleted-list"><li style="list-style-type:disc">États : default, open, focus, error, disabled</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8033-96a8-e9bf60a101a7" class="bulleted-list"><li style="list-style-type:disc">Avec : label, placeholder, helper text</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-805e-b0d9-c60c95396178" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Checkbox</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8040-b4fd-e78b2ea063ea" class="bulleted-list"><li style="list-style-type:disc">États : unchecked, checked, indeterminate, disabled</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ec-85da-f03317572383" class="bulleted-list"><li style="list-style-type:disc">Avec label</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8076-8979-ec9136fd0bae" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Radio Button</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8088-9258-d0b159d02db8" class="bulleted-list"><li style="list-style-type:disc">États : unselected, selected, disabled</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f5-bab4-d1a10a0fa852" class="bulleted-list"><li style="list-style-type:disc">Avec label</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80e0-8c6a-f6c879f3dc62" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Toggle / Switch</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8073-990e-e6e53d7ccea2" class="bulleted-list"><li style="list-style-type:disc">États : off, on, disabled</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8079-b9c2-de02d17fc04a" class=""><strong>Tags &amp; Badges :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-800c-a742-e9da24af48cf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Badge</strong><br/>- Variants : success, warning, error, info, neutral<br/>- Styles : filled, outline<br/>- Tailles : sm, md</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803a-b95f-e6ab1e745507" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Tag</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-804e-8c8d-d28f6cd0eca2" class="bulleted-list"><li style="list-style-type:disc">Avec/sans icône close</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-805f-9190-fdd48c6cc3a2" class="bulleted-list"><li style="list-style-type:disc">Clickable ou static</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80d9-be5a-d23d277acd0b" class=""><strong>Autres Atoms :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ee-89c3-ce1673d1483c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Icon</strong><br/>- Set d’icônes utilisées (ou lien vers librairie)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8049-bcf2-fbc941484bd0" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Avatar</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803c-bf6e-cd4e2ca238c8" class="bulleted-list"><li style="list-style-type:disc">Tailles : sm, md, lg</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80bc-ac30-ee587b1a5024" class="bulleted-list"><li style="list-style-type:disc">Avec image ou initiales</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8001-a8a2-ff2eb9051fc6" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Loader / Spinner</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8040-80ab-d26df02e3e49" class="bulleted-list"><li style="list-style-type:disc">Tailles : sm, md, lg</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8033-a31d-e7592bacef01" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Divider</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-802f-81f4-f5833e16393a" class="bulleted-list"><li style="list-style-type:disc">Horizontal, vertical</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-809a-9137-d4f178620d58"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8070-913b-c8b17f72336e" class="">🟠 Priorité 2 — Molecules (composants assemblés)</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-80b6-b61a-d564acc814c6" class="">Combinaisons d’atoms pour créer des composants fonctionnels.</blockquote></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-808e-a502-c373f6e3f657" class=""><strong>Formulaires :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8073-9e32-ec20e4c3085c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Form Field</strong> (label + input + helper/error)<br/>- Standardise l’espacement et la structure</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-805d-a572-f48335528dbd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Form Group</strong> (plusieurs fields groupés)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ed-b704-fe8082ece241" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Formulaire Lead</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-808c-a62b-c29691b2760b" class="bulleted-list"><li style="list-style-type:disc">Champs : nom, email, téléphone, formation souhaitée</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8092-80ca-fa40454d82c9" class="bulleted-list"><li style="list-style-type:disc">Versions : compact (sidebar) + complet (page)</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a3-9ca2-c3f511680bd8" class="bulleted-list"><li style="list-style-type:disc">Utilise les atoms Input, Select, Button</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8093-9d23-eb06c000c851" class=""><strong>Cards :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8024-8120-ebdbca0b39ff" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Formation Card</strong><br/>- Image, titre, durée, prix, badge CPF, CTA<br/>- Hover state<br/>- Versions : grid + list</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8086-98ac-c9dac60e73f3" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Pricing Card</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8030-9b22-e97a05f262af" class="bulleted-list"><li style="list-style-type:disc">Prix, liste features, CTA</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ac-ade8-ed4fe42d88ff" class="bulleted-list"><li style="list-style-type:disc">Variant “populaire” / mise en avant</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ff-b3d7-fea66486e8be" class="bulleted-list"><li style="list-style-type:disc">Mention financement CPF</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80af-8e6a-e32901bb95d7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Testimonial Card</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f0-89a0-f5d7be17cba2" class="bulleted-list"><li style="list-style-type:disc">Photo, nom, formation, avis, note</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f0-8232-f10508573d3b" class="bulleted-list"><li style="list-style-type:disc">Versions : compact + détaillée</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8063-a3f5-cf30ff002cb2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Blog Card</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8067-b01a-cfb9ff6227e3" class="bulleted-list"><li style="list-style-type:disc">Image, catégorie, titre, date, extrait</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80a5-8f13-f6fa1caab68f" class=""><strong>Feedback :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8034-8c2f-f71eee7a281f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Alert / Notice</strong><br/>- Variants : success, warning, error, info<br/>- Avec/sans icône, avec/sans close</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8026-a66f-e709f17e2682" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Toast / Notification</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8021-b287-d0a78884f849" class="bulleted-list"><li style="list-style-type:disc">Position : top-right, bottom-center…</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80d3-b3fb-d7f9eb044b64" class="bulleted-list"><li style="list-style-type:disc">Auto-dismiss</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8091-9a2f-d2cda0e46343" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Tooltip</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-8fe3-c566457a53da" class="bulleted-list"><li style="list-style-type:disc">Positions : top, bottom, left, right</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8038-a87e-fb4d0811208a" class=""><strong>Navigation éléments :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80db-99ae-e19b5cb48b3d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Breadcrumb</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8089-99f3-c95e8f739d4a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Tabs</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80c3-8c1f-e660502dcd23" class="bulleted-list"><li style="list-style-type:disc">Horizontal, vertical</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80fd-b0b0-d64088bde075" class="bulleted-list"><li style="list-style-type:disc">États : default, active, disabled</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8076-b860-cec1a3c7c20a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Pagination </strong><em><span style="border-bottom:0.05em solid">(⚠️ pas forcément nécéssaire dans notre cas pour l’instant)</span></em></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-800e-8ef1-e5ec01d5298e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Back to Top Button</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-802f-bbe3-f083dfd5844f" class=""><strong>Autres Molecules :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8091-b3c6-f6ebe5497dcc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Search Bar </strong><em><span style="border-bottom:0.05em solid">(⚠️ pas forcément nécéssaire dans notre cas pour l’instant)</span></em><br/>- Input + bouton search<br/>- Avec suggestions (optionnel)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-800c-8e3b-e5e0c66c1fcd" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Rating / Stars</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80dd-9d2b-c3da95710a63" class="bulleted-list"><li style="list-style-type:disc">Note + étoiles + source (Google, Trustpilot)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-809f-8684-f22c9278e37a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Stats Counter</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8062-9eef-dac0742ee408" class="bulleted-list"><li style="list-style-type:disc">Chiffre + label</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-802d-8a87-e9d3474828f0" class="bulleted-list"><li style="list-style-type:disc">“+15 000 élèves”, “95% réussite”</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8041-8353-e514bd11f765" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Trust Badge</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8048-8c6b-e62d4fe17422" class="bulleted-list"><li style="list-style-type:disc">Icône/logo + texte</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803d-8f33-e4589bd5c669" class="bulleted-list"><li style="list-style-type:disc">Certifications, labels qualité</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8020-8031-f4006b66993e"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80e1-8c06-d5094d47efba" class="">🟡 Priorité 3 — Organisms (composants complexes)</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-8024-a619-c723257b62d6" class="">Assemblages de molecules pour créer des blocs complets.</blockquote></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80c2-acdd-efa2b03a11db" class=""><strong>Navigation :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8016-b124-f97e23cdcc7e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Header</strong><br/>- Logo, menu, CTA<br/>- Version desktop (menu visible)<br/>- Version mobile (burger)<br/>- Version sticky</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8093-b119-c0f4399f3610" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Mega Menu</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80c0-ae86-dbc53abd5958" class="bulleted-list"><li style="list-style-type:disc">Catégories de formations</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80e2-a51e-d8de65271b96" class="bulleted-list"><li style="list-style-type:disc">Avec images/icônes par catégorie</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-806e-a8e5-fdf0f4d21ab7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Footer</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8024-9113-f8ecf922cc07" class="bulleted-list"><li style="list-style-type:disc">Colonnes liens, réseaux sociaux, légal</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80c2-9c28-e23eb0332f65" class="bulleted-list"><li style="list-style-type:disc">Newsletter signup intégré</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8026-8909-f0a4251963e9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Mobile Menu (Drawer)</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8077-911d-e3710fbfcb4d" class="bulleted-list"><li style="list-style-type:disc">Menu burger ouvert</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8086-a0c6-f85fa63c795e" class="bulleted-list"><li style="list-style-type:disc">Navigation complète</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80eb-9622-f3cd66b0a16b" class=""><strong>Lead Generation :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8035-bdda-e9c59b55af4f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>CTA Sticky Mobile</strong><br/>- Barre fixe en bas avec bouton principal</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803b-ba0d-e77b01d08ecf" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Pop-up / Modal Lead</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80e8-acd9-c365f7c7f67d" class="bulleted-list"><li style="list-style-type:disc">Capture email (exit intent ou timer)</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-806d-8c3e-d4315af98cfc" class="bulleted-list"><li style="list-style-type:disc">Avec formulaire intégré</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80af-b028-dc5c839522f9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Bandeau Promo</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b0-82a5-e961de963578" class="bulleted-list"><li style="list-style-type:disc">Annonces, offres limitées</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8054-abdd-fb00646ad0c7" class="bulleted-list"><li style="list-style-type:disc">Countdown timer optionnel</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-809b-9704-e701d45bcb56" class="bulleted-list"><li style="list-style-type:disc">Dismissable (close button)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-809c-a791-fc948a6aebbc" class=""><strong>Content :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80eb-ae99-c69ddca3e784" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>FAQ Accordion</strong><br/>- Questions/réponses dépliables<br/>- Optimisé rich snippets SEO</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-808d-bee4-e4de89b8443b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Programme / Curriculum</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8051-963e-c5ab3f542d0d" class="bulleted-list"><li style="list-style-type:disc">Accordion avec modules</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a7-9cf3-f3d3910cffb1" class="bulleted-list"><li style="list-style-type:disc">Icônes, durées par module</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f0-9b02-c99ca0c595ef" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Table of Contents</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8086-93e9-f842254ed722" class="bulleted-list"><li style="list-style-type:disc">Sommaire pages longues</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a4-85af-e3827528aa39" class="bulleted-list"><li style="list-style-type:disc">Version sticky sidebar</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ce-9d2f-ec59d255bccc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Logo Wall</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8063-aad7-e7a81727385d" class="bulleted-list"><li style="list-style-type:disc">Grille logos partenaires / médias</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a4-b85f-c7cd99745d20" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Author Box</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f0-b6bc-efea3c546e61" class="bulleted-list"><li style="list-style-type:disc">Photo, nom, bio courte (E-E-A-T)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8007-a6ad-c5190a2fe3bb" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Related Content Grid</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80e4-a0c7-d8253fe514f6" class="bulleted-list"><li style="list-style-type:disc">Formations ou articles liés (3-4 cards)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80c7-a4c6-dc094c677f12" class=""><strong>Modals :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80bd-a0ee-c92519a85de4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Modal générique</strong><br/>- Header, content, footer (actions)<br/>- Tailles : sm, md, lg<br/>- Close button</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8042-becb-cd81abbfe273" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Video Modal</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f3-9c0f-da0bab35c318" class="bulleted-list"><li style="list-style-type:disc">Lightbox vidéo (témoignages, présentation)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8014-883e-f283c8bd7685"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-8062-b046-e48e799b6c45" class="">🟢 Priorité 4 — Sections types</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-8026-bdd6-ec6f218d52a4" class="">Blocs de page prêts à l’emploi.</blockquote></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80fe-bb4d-d95c2d58758a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Hero Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b8-ba58-ec93f3cc8cad" class="bulleted-list"><li style="list-style-type:disc">Titre, sous-titre, CTA, image/vidéo</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80be-b43c-ecd6c1122cb1" class="bulleted-list"><li style="list-style-type:disc">Versions : centré, split (texte + image)</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8057-89ea-f5887e082058" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Features Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8067-9ea8-d4ee9a180908" class="bulleted-list"><li style="list-style-type:disc">Grille d’arguments (icône + titre + texte)</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8092-85e0-d84fce9b1eee" class="bulleted-list"><li style="list-style-type:disc">3 ou 4 colonnes</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8006-907a-dcc9b8ff273d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Formations Grid</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8088-91d6-d634c7d0f250" class="bulleted-list"><li style="list-style-type:disc">Grille de Formation Cards</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80db-ad70-d4c9ad5cee4e" class="bulleted-list"><li style="list-style-type:disc">Avec filtres optionnels</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803f-9146-e09262a63bf1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Pricing Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8028-94db-c94b930759ef" class="bulleted-list"><li style="list-style-type:disc">2-3 Pricing Cards côte à côte</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-bf9a-d58c076ed90f" class="bulleted-list"><li style="list-style-type:disc">Comparatif features</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b1-955a-faf8b1684b2c" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Testimonials Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8076-943b-c0d059e97a95" class="bulleted-list"><li style="list-style-type:disc">Carousel ou grille de témoignages</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ab-9e27-e5402d395136" class="bulleted-list"><li style="list-style-type:disc">Avec stats de satisfaction</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f8-9255-eb0017b03309" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>FAQ Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ed-b389-d0d384d22891" class="bulleted-list"><li style="list-style-type:disc">FAQ Accordion + CTA contact</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b8-813d-ce7de77971b9" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>CTA Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8084-94ad-d750f4498fef" class="bulleted-list"><li style="list-style-type:disc">Bloc d’appel à l’action pleine largeur</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8016-bf08-e74a07d3b104" class="bulleted-list"><li style="list-style-type:disc">Background coloré ou image</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-805b-9527-c3ec4b9d68b5" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Stats Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-802a-83cf-e099b482fd3a" class="bulleted-list"><li style="list-style-type:disc">Chiffres clés en ligne</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80bb-a99f-d857d028eba8" class="bulleted-list"><li style="list-style-type:disc">Counters animés</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8025-bd14-e50016a6a170" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Trust Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8001-b420-d6c947595ef0" class="bulleted-list"><li style="list-style-type:disc">Logos + badges de confiance</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-bb23-f5bedb98a8dc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Newsletter Section</strong></span><div class="indented"><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80bd-9c0c-f4600d4a1de6" class="bulleted-list"><li style="list-style-type:disc">Formulaire inscription newsletter</li></ul></div></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-80c5-b2e8-d78376a530ae"/></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-805e-b6d2-dc70c6a6f412" class="">🔵 Priorité 5 — Templates de pages</h3></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-804f-9330-e8dfeb035e83" class="">Pages complètes assemblées avec les sections.</blockquote></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8074-b9a5-fd8514ca304d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Home</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8029-bb6b-e660306b0a38" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Page Formation (fiche produit)</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b1-9389-dc2dcb25158b" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Page Catégorie (liste formations)</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-804f-aec5-c70be29bdad4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Blog / Liste articles</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b6-902f-eeddc632cb57" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Article (single post)</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-800d-ad21-feada9ac459f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Documentation gratuite (</strong><em><strong>si toujours d’actu quand on arrive à cette étape)</strong></em></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8030-8a2b-cad1d31e4980" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Contact</strong></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-808b-90f5-eb28db9e0601"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-80bf-bf73-e0739ca19635" class="">♿ Accessibilité — Exigences obligatoires</h2></div><div style="display:contents" dir="auto"><blockquote id="2edfcece-a7b8-80ee-9488-c7f1d4f0e98f" class="">⚠️ IMPORTANT : Le Design System doit respecter les normes d&#x27;accessibilité WCAG 2.1 niveau AA minimum.</blockquote></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80de-a8cf-e87bf2d45159" class="">Contrastes de couleurs</h3></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-800a-910c-caf639a74505" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80ba-a722-c8393d07daed"><th id="A[dn" class="simple-table-header-color simple-table-header">Élément</th><th id="CL@g" class="simple-table-header-color simple-table-header">Ratio minimum</th><th id="\bA?" class="simple-table-header-color simple-table-header">Norme</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8055-bb4c-f7a0b3bbab69"><td id="A[dn" class="">Texte standard (&lt; 18px)</td><td id="CL@g" class=""><strong>4.5:1</strong></td><td id="\bA?" class="">WCAG AA</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80fc-b127-ccf3069183d1"><td id="A[dn" class="">Texte large (≥ 18px bold ou ≥ 24px)</td><td id="CL@g" class=""><strong>3:1</strong></td><td id="\bA?" class="">WCAG AA</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8037-8ba9-ec7db1fafe18"><td id="A[dn" class="">Éléments UI (icônes, bordures, focus)</td><td id="CL@g" class=""><strong>3:1</strong></td><td id="\bA?" class="">WCAG AA</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8099-999a-cd4759498995"><td id="A[dn" class="">Texte sur images/dégradés</td><td id="CL@g" class=""><strong>4.5:1</strong></td><td id="\bA?" class="">Vérifier le pire cas</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-805e-b22a-e4b68642bccd" class=""><strong>Outils de vérification :</strong></p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80f7-9297-d3cc6d946397" class="bulleted-list"><li style="list-style-type:disc">Plugin Figma : <strong>Stark</strong> ou <strong>Contrast</strong></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b3-8ea5-e51b289dc649" class="bulleted-list"><li style="list-style-type:disc">Site : <a href="https://webaim.org/resources/contrastchecker/">WebAIM Contrast Checker</a></li></ul></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80c1-8de1-c97f41581f0c" class="">États interactifs</h3></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-80c3-8292-d9e2fa9c778e" class="">Tous les composants interactifs doivent avoir :</p></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ed-ac19-fdb0a4ba9721" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Focus visible</strong> — Outline ou ring clairement visible (pas juste un changement de couleur)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80da-9188-f001bd40e33e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>Hover distinct</strong> — Changement perceptible (pas uniquement couleur si daltonisme)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80cf-ad46-d44619a20564" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked"><strong>États disabled</strong> — Suffisamment distincts mais pas invisibles</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80e1-942b-f5d23c86ecd8" class="">Bonnes pratiques</h3></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8035-8703-dd6a54b10ad4" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Ne jamais utiliser <strong>la couleur seule</strong> pour transmettre une information (ajouter icône, texte, pattern)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80d3-b8d1-d21cbb27f61e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Taille de texte minimum : <strong>14px</strong> pour le body, <strong>12px</strong> pour les captions</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8047-986d-d031f753b613" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Touch targets minimum : <strong>44x44px</strong> sur mobile (boutons, liens, inputs)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b4-83cb-c38b1793416d" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Espacement suffisant entre éléments cliquables</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80c8-a810-f9db0e953632" class="">Checklist avant livraison</h3></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80cf-ad3c-ef4638055d35" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Tous les contrastes texte vérifiés avec Stark/Contrast</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80aa-a223-eb57f2c3775a" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Focus states présents sur tous les éléments interactifs</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-807b-8c48-c3ea6b736f47" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Pas d&#x27;information transmise uniquement par la couleur</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8014-a891-e72615897a03" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Touch targets ≥ 44px sur mobile</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80aa-92dd-f6564889812f" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Testé avec simulation daltonisme (Stark)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-801a-a27d-f68112f87f4d" class="">
+</p></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8097-acc3-c3e2c1228d3e"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-800e-8a04-fa902e079c07" class="">✅ Règles de création</h2></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80fd-bce8-de4470e3c3bd" class="">Structure obligatoire</h3></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80b0-b243-e2131d0b3a1e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Auto-layout sur TOUS les composants</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8064-b9bf-f3f57b1856d8" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variables Figma utilisées (jamais de hex hardcodé)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80cd-89ab-eb8682330ad2" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variants pour tous les états</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-806c-9714-faa58a5229dc" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Versions Desktop + Mobile quand pertinent</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8032-bbd2-d6dcdfab82be" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Naming clair : <code>Component / Variant / State</code></span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80cb-8c97-cfaead916ad7" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Description dans le panel propriétés</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><h3 id="2edfcece-a7b8-80a3-9d36-d3e423aff846" class="">Naming convention</h3></div><div style="display:contents" dir="auto"><pre id="2edfcece-a7b8-80a4-9ee6-e3b69a008fff" class="code code-wrap"><code style="white-space:pre-wrap;word-break:break-all">Atoms : Button / Primary / Default
+Molecules : Card / Formation / Hover
+Organisms : Header / Desktop / Sticky
+Sections : Section / Hero / Split</code></pre></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-80a4-84d3-f18f0ff334a0"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-8053-b853-dfb4696dd761" class="">⚠️ À éviter</h2></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80ae-990a-c891490b9c65" class="bulleted-list"><li style="list-style-type:disc">❌ Valeurs hardcodées</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803a-bd8f-c5e1229cdc21" class="bulleted-list"><li style="list-style-type:disc">❌ Composants sans auto-layout</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-807a-a01c-f2be372bb814" class="bulleted-list"><li style="list-style-type:disc">❌ Composants sans variants d’états</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-806a-9038-ee9043137591" class="bulleted-list"><li style="list-style-type:disc">❌ Oublier les versions mobile</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a9-a9dc-d51294fb076a" class="bulleted-list"><li style="list-style-type:disc">❌ Naming générique (Frame 1, Group 2…)</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-804b-85d4-ea7ab2cfc65f" class="bulleted-list"><li style="list-style-type:disc">❌ Copier/coller au lieu d’instancier</li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8027-9f4b-e2730b653753" class="bulleted-list"><li style="list-style-type:disc">❌ Créer un composant composé sans avoir créé ses atoms d’abord</li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-802e-b9d1-d6e50d83485b"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-806a-9737-dcae2fd86fa0" class="">📦 Livrables attendus</h2></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-808f-8b5f-e5ebca733f40" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Fichier Figma structuré (pages organisées)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80a9-8b19-c9b06328de4e" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variables Figma complètes (Core + Theme + Spacing + Radius)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-80fb-91eb-cc0988afcf91" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Variable Modes configurés (Desktop / Mobile)</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-800a-a164-c600e0f9f325" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Styles de texte avec variables responsive</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803a-9be9-e66c10f12f38" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Composants Atoms complets</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-804c-b0e6-f725ef265734" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Composants Molecules complets</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8063-b995-e95ed839b2af" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Composants Organisms complets</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-803e-afb7-ea17cf9f7586" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Sections types responsive</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8091-a25d-e956da8a85f1" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">4-5 templates de pages clés</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><ul id="2edfcece-a7b8-8009-95f9-da3559fead15" class="to-do-list"><li><div class="checkbox checkbox-off"></div> <span class="to-do-children-unchecked">Cover page avec sommaire</span><div class="indented"></div></li></ul></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8060-abd9-cd3a1964d053"/></div><div style="display:contents" dir="auto"><h2 id="2edfcece-a7b8-806e-8bd6-f4e93f4c9987" class="">📅 Planning suggéré</h2></div><div style="display:contents" dir="ltr"><table id="2edfcece-a7b8-803d-911f-ec747a87a27e" class="simple-table"><thead class="simple-table-header"><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80cc-a330-e9403e4e554e"><th id="@H&lt;}" class="simple-table-header-color simple-table-header">Phase</th><th id="bx`}" class="simple-table-header-color simple-table-header">Contenu</th><th id="SwV=" class="simple-table-header-color simple-table-header">Durée</th></tr></div></thead><tbody><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8094-a4bd-d79aec968109"><td id="@H&lt;}" class="">1</td><td id="bx`}" class="">Foundations (variables, modes, typos, spacing)</td><td id="SwV=" class="">2 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80c7-bd8f-eb52b15c1d93"><td id="@H&lt;}" class="">2</td><td id="bx`}" class="">Atoms (buttons, inputs, badges, icons)</td><td id="SwV=" class="">2-3 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80c2-b4fe-d5156242b2d2"><td id="@H&lt;}" class="">3</td><td id="bx`}" class="">Molecules (forms, cards, alerts, navigation)</td><td id="SwV=" class="">3-4 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80e1-a142-db1090a69367"><td id="@H&lt;}" class="">4</td><td id="bx`}" class="">Organisms (header, footer, modals, popups)</td><td id="SwV=" class="">2-3 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-8013-bdd1-d1e799d8a46b"><td id="@H&lt;}" class="">5</td><td id="bx`}" class="">Sections types</td><td id="SwV=" class="">2-3 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-805b-a9ac-e592f497ca22"><td id="@H&lt;}" class="">6</td><td id="bx`}" class="">Templates de pages</td><td id="SwV=" class="">2-3 jours</td></tr></div><div style="display:contents" dir="ltr"><tr id="2edfcece-a7b8-80c0-9652-e4adf600471f"><td id="@H&lt;}" class="">7</td><td id="bx`}" class="">Review + ajustements</td><td id="SwV=" class="">1 jour</td></tr></div></tbody></table></div><div style="display:contents" dir="auto"><p id="2edfcece-a7b8-8026-af81-c7ef3374537a" class=""><strong>Total estimé : 14-19 jours</strong></p></div><div style="display:contents" dir="auto"><hr id="2edfcece-a7b8-8058-ae25-c7ae2576dc22"/></div><div style="display:contents" dir="auto"><p id="2eefcece-a7b8-805e-84f3-f4cb4fb96c5c" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
