@@ -20,4 +20,5 @@ jobs:
           use_insecure_cipher: true
           script: |
             cd /home/youschool-apollo/htdocs/apollo.youschool.fr
-            git pull origin stable
+            git fetch origin stable
+            git reset --hard origin/stable
