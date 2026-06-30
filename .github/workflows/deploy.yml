@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
-          known_hosts: "72.60.47.231 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDYXgYzkvL4py0tX3wEtU8kSqk8qoXuVtoVkEZJ/K4VF"
+          fingerprint: "LMWKbJdfKzwfl74RrXcacPvRNZ61ydHidFXwRiYa798"
           script: |
             cd /home/youschool-apollo/htdocs/apollo.youschool.fr
             git pull origin stable
