@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      
 
 jobs:
   deploy:
@@ -18,7 +17,12 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           use_insecure_cipher: true
+          fingerprint: ${{ secrets.SSH_FINGERPRINT }}
           script: |
             cd /home/youschool-apollo/htdocs/apollo.youschool.fr
-            git fetch origin stable
-            git reset --hard origin/stable
+            git fetch origin main
+            git reset --hard origin/main
+            rsync -a --delete \
+              --exclude='.git' \
+              /home/youschool-apollo/htdocs/apollo.youschool.fr/ \
+              /home/mounir/htdocs/apollo.youschool.fr/
